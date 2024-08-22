@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Baskervville:ital@0;1&family=Inter:wght@100..900&family=Jersey+10+Charted&family=Kalnia&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Rubik+Doodle+Shadow&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/general_sentiments.css') }}"
+    />
+
+    <title>Sentiment Analyzer</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar">
+        <div>
+          <a href="#" class="websiteName"> Sentiment<br />Analyzer </a>
+          <a href="#">Features</a>
+          <a href="#">Settings</a>
+          <a href="#">About</a>
+          <a href="#">Help</a>
+          <a href="#">Contact</a>
+        </div>
+        <div>
+          <a href="/" class="homepage">Back to Homepage</a>
+        </div>
+      </nav>
+
+      <div class="about-page">
+        <p class="pagename">Standard Sentiment Analysis</p>
+        <p class="sub-caption">Analyzing text to gauge its sentiment.</p>
+      </div>
+
+      <div class="sentiment-analysis">
+        <div>
+          <img
+            class="question-mark"
+            src="{{ url_for('static', filename='assets/question (1).png') }}"
+            alt="Example Image"
+          />
+          <p>What is <span>Standard Sentiment Analysis</span>?</p>
+          <p>
+            Standard sentiment analysis involves the process of using natural
+            language processing techniques to automatically determine the
+            sentiment expressed in a piece of text, typically categorized as
+            positive, negative, or neutral. This task is crucial for
+            understanding public opinion, customer feedback, and social media
+            sentiment, among other applications. Positive sentiment indicates a
+            favorable attitude, such as happiness or satisfaction, while
+            negative sentiment reflects dissatisfaction or disapproval. Neutral
+            sentiment denotes a lack of strong positive or negative emotion.
+            Various machine learning algorithms, lexicon-based methods, and deep
+            learning models are employed in sentiment analysis, with
+            applications spanning from marketing research and brand monitoring
+            to sentiment-aware customer service and political sentiment
+            tracking.
+          </p>
+        </div>
+        <img
+          src="{{ url_for('static', filename='assets/DrawKit Vector Illustration Mental Health & Psychology (1).svg') }}"
+          alt="Example Image"
+        />
+      </div>
+      <div class="how-it-works-div">
+        <img
+          class="question-mark"
+          src="{{ url_for('static', filename='assets/question (1).png') }}"
+          alt="Example Image"
+        />
+        <p class="how-it-works">How it works?</p>
+        <div class="steps">
+          <div>
+            <img
+              class="steps-number"
+              src="{{ url_for('static', filename='assets/1.png') }}"
+              alt="Example Image"
+            />
+            <p class="step-name">Input the Text:</p>
+            <p>
+              Provide the text data whose sentiment needs to be analyzed. This
+              could be anything from a tweet, a product review, a blog post, to
+              customer feedback.
+            </p>
+          </div>
+          <div>
+            <img
+              class="steps-number"
+              src="{{ url_for('static', filename='assets/2.png') }}"
+              alt="Example Image"
+            />
+            <p class="step-name">Analyze the Sentiment:</p>
+            <p>
+              Use sentiment analysis algorithms to categorize the text into
+              positive, negative, or neutral categories based on the emotional
+              tone conveyed by the words and phrases used in the text.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="simulate-algorithms">
+        <p class="how-it-works simulation"><span>Analyze</span> the text</p>
+
+        <form action="{{ url_for('general_sentiments') }}" method="POST">
+          <textarea
+            name="text"
+            rows="5"
+            cols="50"
+            placeholder="Enter text..."
+          ></textarea
+          ><br /><br />
+          <button type="submit" class="analyze-button">Analyze</button>
+        </form>
+        {% if input_text %}
+        <div class="results">
+          <p class="text-entered">Input Text:</p>
+          <p class="result">{{ input_text }}</p>
+          <p class="sentiment-result">Sentiment:</p>
+          <p class="result">{{ sentiment }}</p>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>

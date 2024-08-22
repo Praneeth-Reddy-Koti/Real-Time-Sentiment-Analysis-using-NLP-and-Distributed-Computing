@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Baskervville:ital@0;1&family=Inter:wght@100..900&family=Kalnia&family=Rubik+Doodle+Shadow&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+
+    <title>Sentiment Analyzer</title>
+  </head>
+  <body class="container">
+    <nav class="navbar">
+      <div>
+        <a href="#" class="websiteName"> Sentiment<br />Analyzer </a>
+        <a href="#">Features</a>
+        <a href="#">Settings</a>
+        <a href="#">About</a>
+        <a href="#">Help</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="welcome">
+        <!-- <a href="#" class="login">Login / Sign Up</a> -->
+        {% if username %}
+        <p>Welcome, <span>{{ username }}</span></p>
+        <a href="{{ url_for('logout') }}" class="login">Logout</a>
+        {% else %}
+        <h2>Please login to continue</h2>
+        <a href="{{ url_for('login') }}">Login</a>
+        {% endif %}
+        <!-- <a href="#" class="signout">Logout</a> -->
+      </div>
+    </nav>
+
+    <section class="captions">
+      <div>
+        <p class="main-caption">
+          See Beyond Words:
+          <span
+            >Real-Time <br />
+            Sentiment Analysis</span
+          >
+        </p>
+        <p class="sub-caption">
+          Harnessing the power of natural language processing to decode
+          sentiments.
+        </p>
+        <div class="main-links">
+          <a href="/general_sentiments" class="standard-analysis"
+            >Standard Sentiment Analysis</a
+          >
+          <a href="/fine_grain_sentiments" class="learn-more"
+            >Fine-Grain Sentiment Analysis</a
+          >
+        </div>
+      </div>
+      <img
+        src="{{ url_for('static', filename='assets/children-5672087_1920.png') }}"
+        alt="Example Image"
+      />
+    </section>
+
+    <section class="about-website">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M22 17v-11.8c0-.663-.537-1.2-1.2-1.2h-17.6c-.663 0-1.2.537-1.2 1.2v11.8h20zm-18-11h16v9h-16v-9zm20 12v.8c0 .663-.537 1.2-1.2 1.2h-21.6c-.663 0-1.2-.537-1.2-1.2v-.8h10c0 .276.224.5.5.5h3c.276 0 .5-.224.5-.5h10z"
+        />
+      </svg>
+      <p class="website-description">
+        A platform designed for in-depth exploration <br />
+        of emotional undercurrents in text
+      </p>
+      <p class="website-sub-description">
+        Providing users with both general sentiment overviews and fine-grained
+        emotional analysis
+      </p>
+    </section>
+
+    <section class="sentiments">
+      <div class="sentiment-classes-img">
+        <img
+          src="{{ url_for('static', filename='assets/pendulum-7318653.svg') }}"
+          alt="Positive, Neutral, and Negative emotions"
+          height="300px"
+          width="auto"
+        />
+      </div>
+      <div class="arrows">
+        <img
+          class="arrow arrow-3"
+          src="{{ url_for('static', filename='assets/arrow-1435215.png') }}"
+          alt=""
+        />
+        <img
+          class="arrow arrow-1"
+          src="{{ url_for('static', filename='assets/arrow-1435215.png') }}"
+          alt=""
+        />
+        <img
+          class="arrow arrow-2"
+          src="{{ url_for('static', filename='assets/arrow-1435215.png') }}"
+          alt=""
+        />
+      </div>
+
+      <div class="sentiment-classes">
+        <div>
+          <p class="sentiment-class">Positive</p>
+          <p class="about-sentiment-class">
+            Positive sentiment reflects satisfaction, happiness, or approval
+            towards a subject, often expressed through favorable language and
+            optimistic tones. It signifies contentment, joy, or enthusiasm,
+            conveying a favorable perception and appreciation of the subject
+            matter.
+          </p>
+        </div>
+        <div>
+          <p class="sentiment-class">Neutral</p>
+          <p class="about-sentiment-class">
+            Neutral sentiment indicates a lack of strong positive or negative
+            feelings, typically characterized by factual statements or objective
+            observations. It represents a state of impartiality or indifference,
+            neither favoring nor opposing the subject, often conveyed through
+            neutral language and factual content.
+          </p>
+        </div>
+        <div>
+          <p class="sentiment-class">Negative</p>
+          <p class="about-sentiment-class">
+            Negative sentiment conveys dissatisfaction, disappointment, or
+            disapproval towards a subject, often expressed through critical
+            language and pessimistic tones. It signifies discontentment,
+            frustration, or resentment, reflecting a negative perception and
+            unfavorable evaluation of the subject matter.
+          </p>
+        </div>
+      </div>
+
+      <div class="arrows">
+        <img
+          class="arrow arrow-6"
+          src="{{ url_for('static', filename='assets/arrow-1435215.png') }}"
+          alt=""
+        />
+        <img
+          class="arrow arrow-4"
+          src="{{ url_for('static', filename='assets/arrow-1435215.png') }}"
+          alt=""
+        />
+        <img
+          class="arrow arrow-5"
+          src="{{ url_for('static', filename='assets/arrow-1435215.png') }}"
+          alt=""
+        />
+      </div>
+
+      <div class="emotion-classes">
+        <div
+          class="card emotion-card"
+          style="width: 20rem; height: 370px"
+          id=""
+        >
+          <img
+            src="{{ url_for('static', filename='assets/pexels-andre-furtado-43594-1263986.jpg') }}"
+            class="card-img-top"
+            alt="Girl in sunflower field"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Joy</h5>
+            <p class="card-text">
+              A state of happiness or delight, often accompanied by feelings of
+              contentment and pleasure.
+            </p>
+          </div>
+        </div>
+        <div
+          class="card emotion-card"
+          style="width: 20rem; height: 370px"
+          id=""
+        >
+          <img
+            src="{{ url_for('static', filename='assets/pexels-ron-lach-9902267.jpg') }}"
+            class="card-img-top"
+            alt="Man depressed"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Indifference</h5>
+            <p class="card-text">
+              Lack of interest, concern, or sympathy towards a particular
+              subject or situation.
+            </p>
+          </div>
+        </div>
+        <div
+          class="card emotion-card"
+          style="width: 20rem; height: 370px"
+          id=""
+        >
+          <img
+            src="{{ url_for('static', filename='assets/pexels-pixabay-236151.jpg') }}"
+            class="card-img-top"
+            alt="sad human"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Sadness</h5>
+            <p class="card-text">
+              An emotional state characterized by feelings of sorrow, grief, or
+              unhappiness, often triggered by loss or disappointment.
+            </p>
+          </div>
+        </div>
+        <div
+          class="card emotion-card"
+          style="width: 20rem; height: 370px"
+          id=""
+        >
+          <img
+            src="{{ url_for('static', filename='assets/pexels-rdne-7413983.jpg') }}"
+            class="card-img-top"
+            alt="Girl being thankful"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Gratitude</h5>
+            <p class="card-text">
+              The quality of being thankful and appreciative, expressing
+              appreciation for kindness or benefits received.
+            </p>
+          </div>
+        </div>
+        <div
+          class="card emotion-card"
+          style="width: 20rem; height: 370px"
+          id=""
+        >
+          <img
+            src="{{ url_for('static', filename='assets/pexels-ekaterina-bolovtsova-6077188.jpg') }}"
+            class="card-img-top"
+            alt="Woman looking into paper"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Objectivity</h5>
+            <p class="card-text">
+              The ability to consider and evaluate information or situations
+              without bias, personal feelings, or prejudice.
+            </p>
+          </div>
+        </div>
+        <div
+          class="card emotion-card"
+          style="width: 20rem; height: 370px"
+          id=""
+        >
+          <img
+            src="{{ url_for('static', filename='assets/pexels-moose-photos-170195-1587014.jpg') }}"
+            class="card-img-top"
+            alt="Man frustrated"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Frustration</h5>
+            <p class="card-text">
+              A feeling of dissatisfaction or annoyance arising from obstacles
+              or unfulfilled desires, leading to agitation or annoyance.
+            </p>
+          </div>
+        </div>
+        <div
+          class="card emotion-card"
+          style="width: 20rem; height: 370px"
+          id=""
+        >
+          <img
+            src="{{ url_for('static', filename='assets/pexels-diva-plavalaguna-6150589.jpg') }}"
+            class="card-img-top"
+            alt="Man excited for some reason"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Excitement</h5>
+            <p class="card-text">
+              A feeling of enthusiastic eagerness or anticipation, often
+              accompanied by heightened energy and enthusiasm.
+            </p>
+          </div>
+        </div>
+        <div
+          class="card emotion-card"
+          style="width: 20rem; height: 370px"
+          id=""
+        >
+          <img
+            src="{{ url_for('static', filename='assets/pexels-sora-shimazaki-5668773.jpg') }}"
+            class="card-img-top"
+            alt="Judge judging"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Impartiality</h5>
+            <p class="card-text">
+              Fairness and neutrality in judgment or decision-making, without
+              favoritism or prejudice towards any particular side or viewpoint.
+            </p>
+          </div>
+        </div>
+        <div
+          class="card emotion-card"
+          style="width: 20rem; height: 370px"
+          id=""
+        >
+          <img
+            src="{{ url_for('static', filename='assets/pexels-timur-weber-8560842.jpg') }}"
+            class="card-img-top"
+            alt="Couple arguing"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Anger</h5>
+            <p class="card-text">
+              An intense emotional response characterized by feelings of
+              hostility, irritability, or fury, typically triggered by perceived
+              injustice, or frustration.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- Link the scripts.js file -->
+    <script src="script.js"></script>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
